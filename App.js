@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { Button } from 'antd-mobile';
 
 const App = () => {
   const [count, setCount] = useState(0);
+  const [number, onChangeNumber] = React.useState(null);
 
   return (
     <View style={styles.data}>
       <Text>You clicked {count} times</Text>
-      <Button onPress={() => setCount(count+1)} title="Click me!"/>
-      <Button onPress={() => setCount(0)} title="Clear"/>
+      <Button activeStyle={{ backgroundColor:'red'}} onClick={() => setCount(count+1)}></Button>
+      <Button type="primary" onClick={() => setCount(0)}></Button>
+      <TextInput style={styles.input}
+        onChangeText={onChangeNumber}
+        value={number}
+        placeholder="PIN"
+        keyboardType="numeric"/>
     </View>
   );
 };
@@ -19,7 +26,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'red'
+  },
+  input:{
+    textAlign: 'center',
   }
+
 });
 
 
